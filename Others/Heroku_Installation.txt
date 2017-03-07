@@ -15,7 +15,7 @@ Go to root folder of the project
 - open requirements.txt then add "psycopg2==2.6.2" at the end of the line (without "")
 
 
-- create a file ".Procfile", open it and add "web: gunicorn mysite.wsgi" (without "") (rename mysite with your own app) ** BEST SOLUTION IS TO WRITE IT ON CONSOLE (echo "web: python app.py" > Procfile) without the "()" **
+- create a file ".Procfile", open it and add "web: gunicorn mysite.wsgi" (without "") (rename mysite with your own app) ** BEST SOLUTION IS TO WRITE IT ON CONSOLE (echo web: gunicorn mysite.wsgi > Procfile) without the "()" **
 
 
 - create a file "runtime.txt", open it and add "python-3.6.0" (without "") or put the latest Python version
@@ -94,3 +94,9 @@ local_settings.py
 
 - $ git remote -v (to see what remote repo you are in heroku)
 - $ heroku git:remote -a sheltered-forest-96689 (rename "sheltered-forest-96689" with your url to change the active url in heroku)
+
+
+OPENING ON LOCAL
+- change the Procfile (web: python manage.py runserver 0.0.0.0:8000)
+- $ heroku local web
+- open in browser (http://localhost:8000)
