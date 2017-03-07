@@ -1,0 +1,96 @@
+Heroku Command lines
+
+(installing heroku)
+
+Sample project name: "mysite"
+
+Go to root folder of the project 
+
+- create virtual environment ($ python -m venv myvenv) rename the venv by editing the "myvenv"
+- run virtual environment ($ myvenv\Scripts\activate)
+
+
+- $ pip install dj-database-url gunicorn whitenoise django
+- $ pip freeze > requirements.txt
+- open requirements.txt then add "psycopg2==2.6.2" at the end of the line (without "")
+
+
+- create a file ".Procfile", open it and add "web: gunicorn mysite.wsgi" (without "") (rename mysite with your own app) ** BEST SOLUTION IS TO WRITE IT ON CONSOLE (echo "web: python app.py" > Procfile) without the "()" **
+
+
+- create a file "runtime.txt", open it and add "python-3.6.0" (without "") or put the latest Python version
+
+- create a file "local_settings.py", open it and add """
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+DEBUG = True
+""" 
+
+
+- Go to mysite/settings.py and add """
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+ALLOWED_HOSTS = ['*']
+
+DEBUG = False
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+"""
+
+
+- Go to mysite/wsgi.py and add "
+from whitenoise.django import DjangoWhiteNoise
+application = DjangoWhiteNoise(application)
+"""
+
+Install heroku on Windows (https://toolbelt.heroku.com/)
+
+
+- $ heroku login
+
+
+- Add this on ".gitignore" 
+*.pyc
+db.sqlite3
+myvenv
+__pycache__
+local_settings.py
+
+
+- $ git status
+- $ git add -A .
+- $ git commit -m "additional files and changes for Heroku"
+
+
+- $ heroku create
+- $ heroku apps:rename the-new-name (renaming the app)
+
+
+- $ git push heroku master (pushing the changes)
+
+
+- $ heroku ps:scale web=1 (enabling your project on web)
+- $ heroku ps:scale web=0 (disabling your project on web)
+
+- $ heroku run python manage.py migrate
+- $ heroku run python manage.py createsuperuser
+
+- $ heroku open (opening the site on your browser)
+
+
+- $ git remote -v (to see what remote repo you are in heroku)
+- $ heroku git:remote -a sheltered-forest-96689 (rename "sheltered-forest-96689" with your url to change the active url in heroku)

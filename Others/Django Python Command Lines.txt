@@ -1,0 +1,69 @@
+"Windows Command Prompt"
+
+Making virtual environment
+python3 -m venv myvenv
+
+Running virtual environment
+myvenv\Scripts\activate
+
+
+******************************************
+Codes when Virtual Enviroment is activated
+******************************************
+
+Installing Django
+pip install django
+or
+python3 -m pip install django
+
+Starting project
+django-admin startproject mysite .
+
+Creating database
+python manage.py migrate
+
+Starting web server
+python manage.py runserver
+or
+python manage.py runserver 0:8000
+
+Creating application
+python manage.py startapp blog 
+(where 'blog' is a folder name)
+
+Letting Django knows that there are changes in 'model.py'
+python manage.py makemigrations blog
+(where 'blog' is a folder name)
+
+Applying migration file ot the database
+python manage.py migrate blog
+(where 'blog' is a folder name)
+
+Creating user in a site with 'admin'
+python manage.py createsuperuser
+
+Django Shell
+python manage.py shell
+
+******************************************
+Codes when Virtual Enviroment is activated
+******************************************
+
+#################################################################
+
+Bash Console in pythonanywhere.com
+
+Running Virtual Environment
+virtualenv --python=python3.4 myvenv
+
+Activating Virtual Environment
+source myvenv/bin/activate
+
+Installing Django
+pip install django==1.9.0
+
+Creating database
+python manage.py migrate
+
+Creating user in a site with 'admin'
+python manage.py createsuperuser
