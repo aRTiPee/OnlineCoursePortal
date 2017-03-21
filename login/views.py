@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import LoginForm
+from .models import LoginForm, Student
 
 #class Index(forms.ModelForm):
 #        """
@@ -13,6 +13,12 @@ from .models import LoginForm
 #            return render(request, self.template_name,)
 def Index(request):
     return render(request, 'login/index.html', {})
+
+def Index2(request):
+    return render(request, 'login/full-width.html', {})
+
+def Index3(request):
+    return render(request, 'login/style-demo.html', {})
 
 #class Faculty(View):
 #        """
