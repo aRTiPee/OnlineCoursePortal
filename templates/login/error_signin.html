@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Sign up{% endblock title %}
+{% block title %}Error{% endblock title %}
 
 
     {% block header %}
@@ -23,14 +23,10 @@
     {% endblock header %}
 
 {% block content %}
-<h1>STUDENT SIGNUP</h1>
-	<form method="POST" action="{% url 'signup' %}">
-	{% csrf_token %}
-		First Name:<input type="text" name="fname" id="fname"><br>
-		Last Name:<input type="text" name="lname" id="lname"><br>
-		Username:<input type="text" name="user" id="user"><br>
-		Password:<input type="password" name="pwd" id="pwd"><br>
-		Email<input type="email" name="email" id="email"><br>
-		<input type="submit" value="Register">
-	</form>
+
+<h1>No user exist!</h1>
+<h3><a href="../signup.html">New Student? REGISTER HERE! &raquo;</a></h3>
+<br>
+<h5><p><a href="../signup_faculty.html">Signing up for Faculty? SIGN UP HERE! &raquo;</a></p></h5>
+<a href="/">Home</a>
 {% endblock content %}

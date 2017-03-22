@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Sign up{% endblock title %}
+{% block title %}Success!{% endblock title %}
 
 
     {% block header %}
@@ -23,14 +23,9 @@
     {% endblock header %}
 
 {% block content %}
-<h1>STUDENT SIGNUP</h1>
-	<form method="POST" action="{% url 'signup' %}">
-	{% csrf_token %}
-		First Name:<input type="text" name="fname" id="fname"><br>
-		Last Name:<input type="text" name="lname" id="lname"><br>
-		Username:<input type="text" name="user" id="user"><br>
-		Password:<input type="password" name="pwd" id="pwd"><br>
-		Email<input type="email" name="email" id="email"><br>
-		<input type="submit" value="Register">
-	</form>
+<h1>You are now registered!</h1>
+<br>
+<h2>Faculty registration must wait for Administration approval before logging in.</h2>
+
+<a href="/">Home</a>
 {% endblock content %}

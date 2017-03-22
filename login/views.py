@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import LoginForm
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.db import IntegrityError
 
 #class Index(forms.ModelForm):
@@ -17,7 +17,7 @@ from django.db import IntegrityError
 def Index(request):
     return render(request, 'login/index.html', {})
 
-def Index4(request):
+def IndexSignUp(request):
     return render(request, 'login/signup.html', {})
 
 def signup(request):
@@ -29,12 +29,17 @@ def signup(request):
             user = User.objects.create_user(usern, email, pwd)
             user.first_name = request.POST.get('fname', None)
             user.last_name =  request.POST.get('lname',None)
+            #user.is_active = False
+            user.groups.add(Group.objects.get(name='Students'))
             user.save()
             if(authenticate(username=usern, password=pwd)):
-                return render(request, 'login/success.html',)
+                return render(request, 'login/signup_success.html',)
+            else:
+                print("ERROR!!!!!!s")
+                return render(request, 'login/signup_success.html',)
     except(IntegrityError):
         print("ERROR!!!!!!")
-        return render(request, 'login/success.html',)
+        return render(request, 'login/error_signup.html',)
 
 def signin(request):
     if request.method == 'POST':
@@ -44,14 +49,52 @@ def signin(request):
         if user is not None:
             print("YAAAAAAY!")
             login(request, user)
-            return render(request, 'login/index.html', {'user': user})
+            return render(request, 'login/signin_success.html', {'user': user})
         else:
             print("ERROR!!!!")
-            return redirect('../')
+            return render(request, 'login/error_signin.html')
+    else:
+        print("ERROR!!!!2")
+        return render(request, 'login/error_signin.html')
 
 def log_out(request):
     logout(request)
-    return redirect('../')
+    #return redirect('../')
+    return render(request, 'login/logout.html')
+
+def courses(request):
+    return render(request, 'login/courses.html', {})
+
+def news(request):
+    return render(request, 'login/news.html', {})
+
+def about(request):
+    return render(request, 'login/about.html', {})
+
+def IndexSignup_faculty(request):
+    return render(request, 'login/IndexSignup_faculty.html', {})
+
+def signup_faculty(request):
+    try:
+        if request.method == 'POST':
+            usern = request.POST.get('user',None)
+            pwd = request.POST.get('pwd',None)
+            email = request.POST.get('email',None)
+            user = User.objects.create_user(usern, email, pwd)
+            user.first_name = request.POST.get('fname', None)
+            user.last_name =  request.POST.get('lname',None)
+            user.is_active = False
+            user.groups.add(Group.objects.get(name='Faculty'))
+            user.save()
+            if(authenticate(username=usern, password=pwd)):
+                return render(request, 'login/signup_success_faculty.html',)
+            else:
+                print("ERROR!!!!!!s")
+                return render(request, 'login/signup_success_faculty.html',)
+    except(IntegrityError):
+        print("ERROR!!!!!!")
+        return render(request, 'login/error_signup.html',)
+
 
 #class Faculty(View):
 #        """
