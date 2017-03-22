@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import LoginForm, Student
-from .forms import StudentForm
+from .models import LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.db import IntegrityError
@@ -32,10 +31,27 @@ def signup(request):
             user.last_name =  request.POST.get('lname',None)
             user.save()
             if(authenticate(username=usern, password=pwd)):
-                return render(request, 'login/index.html',)
+                return redirect('../')
         except(IntegrityError):
             print("ERROR!!!!!!")
-            return render(request, 'login/index.html',)
+            return redirect('../')
+
+def signin(request):
+    if request.method == 'POST':
+        usern = request.POST.get('pupilname', None)
+        pwd = request.POST.get('pupilpass', None)
+        user = authenticate(username=usern, password=pwd)
+        if user is not None:
+            print("YAAAAAAY!")
+            login(request, user)
+            return render(request, 'login/index.html', {'user': user})
+        else:
+            print("ERROR!!!!")
+            return redirect('../')
+
+def log_out(request):
+    logout(request)
+    return redirect('../')
 
 #class Faculty(View):
 #        """

@@ -2,6 +2,14 @@
 {% block title %}Home{% endblock title %}
 
 {% block logintab %}
+  {% if user.is_authenticated %}
+  <div id="loginpanel">
+          <ul>
+            <li class="left">Welcome {{ user.username }}</li>
+            <a href="{% url 'log_out' %}">Log out</a>
+          </ul>
+        </div>
+  {% else %}
     <div class="wrapper col0">
       <div id="topbar">
         <div id="slidepanel">
@@ -36,8 +44,8 @@
           </div>
           <div class="topbox last">
             <h2>Students Login</h2>
-            <form action="#" method="post">
-              <fieldset>
+            <form action="{% url 'signin' %}" method="post">
+              <fieldset>{% csrf_token %}
                 <legend>Students Login Form</legend>
                 <label for="pupilname">Username:
                   <input type="text" name="pupilname" id="pupilname" value="" />
@@ -65,6 +73,7 @@
         <br class="clear" />
       </div>
     </div>
+    {% endif %}
 {% endblock logintab %}
 
 {% block content %}
