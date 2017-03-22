@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import LoginForm, Student
 from .forms import StudentForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.db import IntegrityError
 
 #class Index(forms.ModelForm):
 #        """
@@ -27,23 +29,19 @@ def Index4(request):
 
 def signup(request):
     if request.method == 'POST':
-        stu = StudentForm(request.POST)
-        if stu.is_valid():
-            stud = stu.save(commit=False)
-            stud.FirstName = request.POST.get('fname', None)
-            stud.LastName = request.POST.get('lname',None)
-            stud.BirthDate = request.POST.get('bday',None)
-            stud.Gender = request.POST.get('gen',None)
-            stud.UserName = request.POST.get('user',None)
-            stud.Password = request.POST.get('pwd',None)
-            stud.StreetAddress = request.POST.get('sadd',None)
-            stud.MunicipalityAddress = request.POST.get('madd',None)
-            stud.Province_CityAddress = request.POST.get('padd',None)
-            stud.ZIPCode = request.POST.get('zip',None)
-            stud.ContactNumber = request.POST.get('mob',None)
-            stud.EmailAddress = request.POST.get('email',None)
-            stud.save()
-            return redirect('../')
+        try:
+            usern = request.POST.get('user',None)
+            pwd = request.POST.get('pwd',None)
+            email = request.POST.get('email',None)
+            user = User.objects.create_user(usern, email, pwd)
+            user.first_name = request.POST.get('fname', None)
+            user.last_name =  request.POST.get('lname',None)
+            user.save()
+            if(authenticate(username=usern, password=pwd)):
+                return render(request, 'login/index.html',)
+        except(IntegrityError):
+            print("ERROR!!!!!!")
+            return render(request, 'login/index.html',)
 
 #class Faculty(View):
 #        """
@@ -56,3 +54,11 @@ def signup(request):
 #
 #        def post(self, request, *args, **kwargs):
 #            pass
+'''
+u.Student.BirthDate = request.POST.get('bday',None)
+u.Student.StreetAddress = request.POST.get('sadd',None)
+            u.Student.MunicipalityAddress = request.POST.get('madd',None)
+            u.Student.Province_CityAddress = request.POST.get('padd',None)
+            u.Student.ZIPCode = request.POST.get('zip',None)
+            u.Student.ContactNumber = request.POST.get('mob',None)
+'''

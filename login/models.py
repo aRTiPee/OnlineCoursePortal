@@ -21,6 +21,7 @@ class LoginForm(models.Model):
         return self.title
 
 class Student(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     StudentNumber = models.AutoField(primary_key=True)
     FirstName = models.CharField(max_length=100, blank=True)
     LastName = models.CharField(max_length=100, blank=True)
@@ -37,3 +38,4 @@ class Student(models.Model):
 
     def publish(self):
         self.save()
+
