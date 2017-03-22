@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Sign up{% endblock title %}
+
+
+{% block content %}
+	<form method="POST" action="{% url 'signup' %}">
+	{% csrf_token %}
+		First Name:<input type="text" name="fname" id="fname"><br>
+		Last Name:<input type="text" name="lname" id="lname"><br>
+		Birthday:<input type="date" name="bday" id="bday"><br>
+		Gender:<input type="text" pattern="[M|F]" name="gen" id="gen" placeholder="M or F"><br>
+		Username:<input type="text" name="user" id="user"><br>
+		Password:<input type="password" name="pwd" id="pwd"><br>
+		Street Address:<input type="text" name="sadd" id="sadd"><br>
+		Municipality Address:<input type="text" name="madd" id="madd"><br>
+		Province Address:<input type="text" name="padd" id="padd"><br>
+		ZIP Code:<input type="text" name="zip" id="zip"><br>
+		Mobile No.:<input type="text" name="mob" id="mob"><br>
+		Email<input type="email" name="email" id="email"><br>
+		<input type="submit" value="Register">
+	</form>
+{% endblock content %}
