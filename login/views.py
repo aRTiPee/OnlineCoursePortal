@@ -21,8 +21,8 @@ def Index4(request):
     return render(request, 'login/signup.html', {})
 
 def signup(request):
-    if request.method == 'POST':
-        try:
+    try:
+        if request.method == 'POST':
             usern = request.POST.get('user',None)
             pwd = request.POST.get('pwd',None)
             email = request.POST.get('email',None)
@@ -31,10 +31,10 @@ def signup(request):
             user.last_name =  request.POST.get('lname',None)
             user.save()
             if(authenticate(username=usern, password=pwd)):
-                return redirect('../')
-        except(IntegrityError):
-            print("ERROR!!!!!!")
-            return redirect('../')
+                return render(request, 'login/success.html',)
+    except(IntegrityError):
+        print("ERROR!!!!!!")
+        return render(request, 'login/success.html',)
 
 def signin(request):
     if request.method == 'POST':

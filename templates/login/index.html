@@ -3,12 +3,20 @@
 
 {% block logintab %}
   {% if user.is_authenticated %}
-  <div id="loginpanel">
+  <div class="wrapper col0">
+      <div id="topbar">
+        <div id="loginpanel">
           <ul>
-            <li class="left">Welcome {{ user.username }}</li>
-            <a href="{% url 'log_out' %}">Log out</a>
+            <li class="left">Welcome {{ user.username }}!</li>
+          
           </ul>
+          <a href="{% url 'log_out' %}">Log out</a>
         </div>
+        <br class="clear" />
+      </div>
+
+          
+    </div>
   {% else %}
     <div class="wrapper col0">
       <div id="topbar">
