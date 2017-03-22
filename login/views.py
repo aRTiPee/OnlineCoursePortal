@@ -17,6 +17,7 @@ from django.db import IntegrityError
 def Index(request):
     return render(request, 'login/index.html', {})
 
+
 def IndexSignUp(request):
     return render(request, 'login/signup.html', {})
 

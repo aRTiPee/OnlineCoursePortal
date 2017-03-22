@@ -20,6 +20,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     
   {% if user.is_authenticated %}
     <!--##########################################-->
@@ -55,11 +56,30 @@
             <center><p><a href="#">Manage your course &raquo;</a></p></center>
           </div>
           <br class="clear" />
+=======
+    {% block logintab %}
+    {% endblock logintab %}
+
+    {% block header %}
+
+    <div class="wrapper col1">
+      <div id="header">
+        <div id="logo">
+          <h1><a href="index.html">GGWP Schools</a></h1>
+          <p>#Tagline here</p>
+>>>>>>> 24910a8de88f41601f6bb56572a86526786d0f4a
         </div>
         <div id="loginpanel">
           <ul>
+<<<<<<< HEAD
             <li class="left">Logged In &raquo;</li> 
             <li class="right" id="toggle"><a id="slideit" href="#slidepanel">{{ user.username }}</a><a id="closeit" style="display: none;" href="#slidepanel">Close Panel</a></li>
+=======
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">About</a></li>
+            <li class="last"><a href="#">Others</a></li>
+>>>>>>> 24910a8de88f41601f6bb56572a86526786d0f4a
           </ul>
         </div>
         <br class="clear" />
