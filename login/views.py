@@ -16,12 +16,6 @@ from django.contrib.auth import authenticate, login, logout
 def Index(request):
     return render(request, 'login/index.html', {})
 
-def Index2(request):
-    return render(request, 'login/full-width.html', {})
-
-def Index3(request):
-    return render(request, 'login/style-demo.html', {})
-
 def Index4(request):
     return render(request, 'login/signup.html', {})
 
