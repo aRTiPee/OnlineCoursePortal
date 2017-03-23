@@ -3,24 +3,12 @@
 
 
     {% block header %}
-    <div class="wrapper col1">
-      <div id="header">
-        <div id="logo">
-          <h1><a href="../../../../../../../../">GGWP Schools</a></h1>
-          <p>#Tagline here</p>
-        </div>
-        <div id="topnav">
-          <ul>
             <li><a href="../../../../../../../../">Home</a></li>
             <li><a href="../../../../../../../../courses.html">Courses</a></li>
             <li class="active"><a href="../../../../../../../../about.html">About</a></li>
-            <li class="last"><a href="../../../../../../../../news.html">News</a></li>
-          </ul>
-        </div>
-        <br class="clear" />
-      </div>
-    </div>
-
+            <li><a href="../../../../../../../../news.html">News</a></li>
+    {% endblock header %}
+    {% block nav %}
     <div class="wrapper col2">
       <div id="breadcrumb">
         <ul>
@@ -32,8 +20,7 @@
         </ul>
       </div>
     </div>
-
-    {% endblock header %}
+    {% endblock nav %}
 
 {% block content %}
 {% endblock content %}

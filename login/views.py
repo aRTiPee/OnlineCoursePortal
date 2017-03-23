@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import LoginForm
+#from .models import Subjects
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, Group
 from django.db import IntegrityError
@@ -72,10 +72,10 @@ def courses(request):
     x = request.user.groups.all()
     y = None
     if not x:
-        return render(request, 'login/courses.html', {'faculty':faculty, 'y':y, 'x':x})
+        return render(request, 'login/courses.html', {'faculty':faculty, 'y':y})
     else:  
         y = x[0]
-        return render(request, 'login/courses.html', {'faculty':faculty, 'y':y, 'x':x})
+        return render(request, 'login/courses.html', {'faculty':faculty, 'y':y})
 
 def news(request):
     return render(request, 'login/news.html', {})
