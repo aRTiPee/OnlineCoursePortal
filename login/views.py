@@ -3,7 +3,11 @@ from .models import LoginForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, Group
 from django.db import IntegrityError
+from django import template
 
+register = template.Library() 
+#def has_group():
+#    return user.groups.filter(name='Faculty').exists()
 #class Index(forms.ModelForm):
 #        """
 #        https://docs.djangoproject.com/en/1.9/topics/class-based-views/intro/
@@ -64,7 +68,14 @@ def log_out(request):
     return render(request, 'login/logout.html')
 
 def courses(request):
-    return render(request, 'login/courses.html', {})
+    faculty = Group.objects.get(name="Faculty")
+    x = request.user.groups.all()
+    y = None
+    if not x:
+        return render(request, 'login/courses.html', {'faculty':faculty, 'y':y, 'x':x})
+    else:  
+        y = x[0]
+        return render(request, 'login/courses.html', {'faculty':faculty, 'y':y, 'x':x})
 
 def news(request):
     return render(request, 'login/news.html', {})
@@ -95,6 +106,8 @@ def signup_faculty(request):
     except(IntegrityError):
         print("ERROR!!!!!!")
         return render(request, 'login/error_signup.html',)
+
+
 
 
 #class Faculty(View):

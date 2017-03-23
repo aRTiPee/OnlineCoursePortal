@@ -36,13 +36,14 @@
     {% endblock header %}
 
 {% block content %}
-
-{% if user.is_authenticated %}
+{% if y != faculty and user.is_authenticated %}
 <p><a href="#">Course 1</a></p>
 <p><a href="#">Course 1</a></p>
 <p><a href="#">Course 1</a></p>
 <p><a href="#">Course 1</a></p>
 <p><a href="#">Course 1</a></p>
+<p><a href="#">Course 1231234124</a></p>
+{% elif y == faculty and user.is_authenticated %}
 <p><a href="#">Course 1231234124</a></p>
 {% else %}
 <h2>Students/Faculty Login</h2>
