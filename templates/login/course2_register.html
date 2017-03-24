@@ -1,17 +1,49 @@
 {% extends 'base.html' %}
-{% block title %}Success!{% endblock title %}
+{% block title %}Course 2{% endblock title %}
 
 
     {% block header %}
             <li><a href="../../../../../../../../">Home</a></li>
-            <li><a href="../../../../../../../../courses.html">Courses</a></li>
+            <li class="active"><a href="../../../../../../../../courses.html">Courses</a></li>
             <li><a href="../../../../../../../../about.html">About</a></li>
             <li><a href="../../../../../../../../news.html">News</a></li>
     {% endblock header %}
+    {% block nav %}
+    <div class="wrapper col2">
+      <div id="breadcrumb">
+        <ul>
+          <li class="first">You Are Here</li>
+          <li>&#187;</li>
+          <li><a href="../../../../../../../../">Home</a></li>
+          <li>&#187;</li>
+          <li><a href="../../../../../../../../courses.html">Courses</a></li>
+          <li>&#187;</li>
+          <li class="current"><a href="../../../../../../../../course2.html">Course 2</a></li>
+          <li>&#187;</li>
+        </ul>
+      </div>
+    </div>
+    {% endblock nav %}
 
-{% block content %}
-<h1>You are now registered!</h1>
-<br>
+    {% block content %}
+      {% if y != faculty and user.is_authenticated %}
+      <form method="POST" action="{% url 'register2' %}">
+      {% csrf_token %}
+        <input type="submit" name="submit" value="Submit">
+      </form>
+{% elif y == faculty and user.is_authenticated %}
+
+
+<h1>FACULTY</h1>
+
+
+
+
+
+
+
+
+{% else %}
 <h2>Students/Faculty Login</h2>
             <form action="{% url 'signin' %}" method="post">
             {% csrf_token %}
@@ -32,4 +64,5 @@
                 </p>
               </fieldset>
             </form>
-{% endblock content %}
+{% endif %}
+    {% endblock content %}
