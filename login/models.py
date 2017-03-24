@@ -19,7 +19,6 @@ from django.dispatch import receiver
 
 #    def __str__(self):
 #        return self.title
-
 class SubjectA(models.Model):
     students = models.OneToOneField(User, on_delete=models.CASCADE, 
         primary_key=True, blank=True)

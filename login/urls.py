@@ -1,5 +1,8 @@
-from django.conf.urls import url
+from django.conf.urls import include, url
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
 
 urlpatterns = [
             url(r'^$', views.Index, name='index'),
@@ -23,3 +26,6 @@ urlpatterns = [
             url(r'^course5.html/', views.course5, name='course5'),
             url(r'^register5/', views.register_course5, name='register5'),
             ]
+
+if settings.DEBUG:
+      urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

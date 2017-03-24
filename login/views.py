@@ -19,6 +19,7 @@ register = template.Library()
 #            model = LoginForm
 #       def get(self, request, *args, **kwargs):
 #            return render(request, self.template_name,)
+
 def Index(request):
     return render(request, 'login/index.html', {})
 

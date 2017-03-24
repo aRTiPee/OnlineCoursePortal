@@ -8,8 +8,8 @@ from django.contrib.auth.models import User
 class Subject_Student_Display(admin.ModelAdmin):
     list_display = (
         'students',
-    )
-
+        )
+    
 admin.site.register(SubjectA, Subject_Student_Display)
 admin.site.register(SubjectB, Subject_Student_Display)
 admin.site.register(SubjectC, Subject_Student_Display)
