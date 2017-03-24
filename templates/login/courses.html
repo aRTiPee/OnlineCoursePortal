@@ -24,14 +24,17 @@
 
 {% block content %}
 {% if y != faculty and user.is_authenticated %}
-<p><a href="#">Course 1</a></p>
-<p><a href="#">Course 1</a></p>
-<p><a href="#">Course 1</a></p>
-<p><a href="#">Course 1</a></p>
-<p><a href="#">Course 1</a></p>
-<p><a href="#">Course 1231234124</a></p>
+<p><a href="/course1.html">Course 1</a></p>
+<p><a href="/course2.html">Course 2</a></p>
+<p><a href="/course3.html">Course 3</a></p>
+<p><a href="/course4.html">Course 4</a></p>
+<p><a href="/course5.html">Course 5</a></p>
 {% elif y == faculty and user.is_authenticated %}
-<p><a href="#">Course 1231234124</a></p>
+<p><a href="/course1.html">Course 1 - Faculty</a></p>
+<p><a href="/course2.html">Course 2 - Faculty</a></p>
+<p><a href="/course3.html">Course 3 - Faculty</a></p>
+<p><a href="/course4.html">Course 4 - Faculty</a></p>
+<p><a href="/course5.html">Course 5 - Faculty</a></p>
 {% else %}
 <h2>Students/Faculty Login</h2>
             <form action="{% url 'signin' %}" method="post">
@@ -50,7 +53,6 @@
                   &nbsp;
                   <input type="reset" name="pupilreset" id="pupilreset" value="Reset" />
                   &nbsp;<br><br>
-                  <input type="button" onclick="alert('Hello World!')" value="Forgot Username/Password">
                 </p>
               </fieldset>
             </form>
