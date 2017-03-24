@@ -20,12 +20,12 @@ from django.dispatch import receiver
 #    def __str__(self):
 #        return self.title
 
-class Subject(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, blank=True)
-    subjectA = models.CharField(max_length=500, blank=True)
-    subjectB = models.CharField(max_length=500, blank=True)
-    subjectC = models.CharField(max_length=500, blank=True)
-    subjectD = models.CharField(max_length=500, blank=True)
-    subjectE = models.CharField(max_length=500, blank=True)
+#class Subject(models.Model):
+#    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, blank=True)
+#    subjectA = models.CharField(max_length=500, blank=True)
+#    subjectB = models.CharField(max_length=500, blank=True)
+#    subjectC = models.CharField(max_length=500, blank=True)
+#    subjectD = models.CharField(max_length=500, blank=True)
+#    subjectE = models.CharField(max_length=500, blank=True)
 
 
