@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}News{% endblock title %}
-
+{% load staticfiles %}
 
     {% block header %}
             <li><a href="../../../../../../../../">Home</a></li>
@@ -23,4 +23,32 @@
     {% endblock nav %}
 
 {% block content %}
+<center><h2>Trending</h2>
+      
+        <li>
+          <div class="imgholder"><a href="http://photoshopcafe.com/use-puppet-warp-tool-photoshop-tutorial/"><img src="{% static '/images/1.jpg' %}" alt="" /></a></div>
+          <p><strong><a href="http://photoshopcafe.com/use-puppet-warp-tool-photoshop-tutorial/" target="_blank">How to use the Puppet Warp Tool in photoshop Tutorial</a></strong></p>
+          <p>Learn how to reshape animals and people with the puppet warp tool in Photoshop. This tutorial shows you the best settings to use, by guest, Karen Alsop for Story Art. </p>
+        </li>
+        <li>
+          <div class="imgholder"><a href="http://photoshopcafe.com/tutorials/convert-photos-black-white-photoshop-best-way/"><img src="{% static '/images/2.jpg' %}" alt="" /></a></div>
+          <p><strong><a href="http://photoshopcafe.com/tutorials/convert-photos-black-white-photoshop-best-way/" target="_blank">How to Convert Photos to Black and White in Photoshop, the best way!</a></strong></p>
+          <p>How to convert a photo to black and white in Photoshop. The Channel mixer is still the best way to get a clean black and white photo in Photoshop. This tutorial explains why and examines the other methods too. This is the best way to learn black and white photos in Photoshop.</p>
+        </li>
+        <li>
+          <div class="imgholder"><a href="http://photoshopcafe.com/ridiculously-easy-way-remove-power-lines-photo-photoshop-tutorial"><img src="{% static '/images/3.jpg' %}" alt="" /></a></div>
+          <p><strong><a href="http://photoshopcafe.com/ridiculously-easy-way-remove-power-lines-photo-photoshop-tutorial" target="_blank">Ridiculously easy way to remove power lines from a photo in Photoshop</a></strong></p>
+          <p>How to remove power lines from a photo in Photoshop. This super fast trick, makes it so easy to remove distractions from photos in a non destructive way. Watch this free Photoshop video tutorial by Colin Smith</p>
+        </li>
+        <li>
+          <div class="imgholder"><a href="http://photoshopcafe.com/swapping-backgrounds-photoshop-selection-tips-get-refine-edge-cc-2017/"><img src="{% static '/images/4.jpg' %}" alt="" target="_blank"/></a></div>
+          <p><strong><a href="http://photoshopcafe.com/swapping-backgrounds-photoshop-selection-tips-get-refine-edge-cc-2017/">Swapping Backgrounds in Photoshop. Selection tips and how to get Refine Edge in CC 2017</a></strong></p>
+          <p>Photoshop CC tutorial, how to easily swap the background in a photo. Refine Edge in the latest version of Photoshop with a secret shortcut and super clean edges on your cutouts, so that they blend in perfectly with the background.</p>
+        </li>
+        <li class="last">
+          <div class="imgholder"><a href="http://photoshopcafe.com/complete-guide-layer-blending-modes-photoshop/"><img src="{% static '/images/5.jpg' %}" alt="" target="_blank"/></a></div>
+          <p><strong><a href="http://photoshopcafe.com/complete-guide-layer-blending-modes-photoshop/">Complete guide to Layer Blending Modes in Photoshop, written, video + free ebook</a></strong></p>
+          <p>The complete guide to Layer Blending modes in Photoshop. This tutorial shows you how to use blending modes and what each blend mode does. Free PDF ebook included.</p>
+        </li>
+     </center>
 {% endblock content %}

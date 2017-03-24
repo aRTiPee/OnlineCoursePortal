@@ -39,14 +39,14 @@
 
 
 {% else %}
-<h2>Students/Faculty Login</h2>
+<center><h2>Students/Faculty Login</h2>
             <form action="{% url 'signin' %}" method="post">
             {% csrf_token %}
               <fieldset>
                 <legend>Students Login Form</legend>
                 <label for="pupilname">Username:
                   <input type="text" name="pupilname" id="pupilname" value="" />
-                </label>
+                </label><br>
                 <label for="pupilpass">Password:
                   <input type="password" name="pupilpass" id="pupilpass" value="" />
                 </label>
@@ -58,7 +58,7 @@
                   &nbsp;<br><br>
                 </p>
               </fieldset>
-            </form>
+            </form></center>
 {% endif %}
 
     {% endblock content %}

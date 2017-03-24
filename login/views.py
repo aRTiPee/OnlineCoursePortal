@@ -129,6 +129,8 @@ def course1(request):
             except:
                 y = x[0]
                 return render(request, 'login/course1_register.html', {'faculty':faculty, 'y':y})
+    else:
+        return render(request, 'login/course1_register.html', {})
 
 def register_course1(request):
     faculty = Group.objects.get(name="Faculty")
@@ -167,7 +169,8 @@ def course2(request):
             except:
                 y = x[0]
                 return render(request, 'login/course2_register.html', {'faculty':faculty, 'y':y})
-
+    else:
+        return render(request, 'login/course1_register.html', {})
 def register_course2(request):
     faculty = Group.objects.get(name="Faculty")
     if request.user.is_authenticated():
@@ -205,7 +208,8 @@ def course3(request):
             except:
                 y = x[0]
                 return render(request, 'login/course3_register.html', {'faculty':faculty, 'y':y})
-
+    else:
+        return render(request, 'login/course1_register.html', {})
 def register_course3(request):
     faculty = Group.objects.get(name="Faculty")
     if request.user.is_authenticated():
@@ -244,7 +248,8 @@ def course4(request):
             except:
                 y = x[0]
                 return render(request, 'login/course4_register.html', {'faculty':faculty, 'y':y})
-
+    else:
+        return render(request, 'login/course1_register.html', {})
 def register_course4(request):
     faculty = Group.objects.get(name="Faculty")
     if request.user.is_authenticated():
@@ -282,7 +287,8 @@ def course5(request):
             except:
                 y = x[0]
                 return render(request, 'login/course5_register.html', {'faculty':faculty, 'y':y})
-
+    else:
+        return render(request, 'login/course1_register.html', {})
 def register_course5(request):
     faculty = Group.objects.get(name="Faculty")
     if request.user.is_authenticated():
