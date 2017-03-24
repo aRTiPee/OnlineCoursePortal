@@ -19,24 +19,23 @@ from django.dispatch import receiver
 
 #    def __str__(self):
 #        return self.title
-
-class SubjectA(models.Model):
+class PhotoTutorials(models.Model):
     students = models.OneToOneField(User, on_delete=models.CASCADE, 
         primary_key=True, blank=True)
 
-class SubjectB(models.Model):
+class PhotoshopBasics(models.Model):
     students = models.OneToOneField(User, on_delete=models.CASCADE, 
         primary_key=True, blank=True)
 
-class SubjectC(models.Model):
+class SpecialEffects(models.Model):
     students = models.OneToOneField(User, on_delete=models.CASCADE, 
         primary_key=True, blank=True)
 
-class SubjectD(models.Model):
+class LightRoom(models.Model):
     students = models.OneToOneField(User, on_delete=models.CASCADE, 
         primary_key=True, blank=True)
 
-class SubjectE(models.Model):
+class TextEffects(models.Model):
     students = models.OneToOneField(User, on_delete=models.CASCADE, 
         primary_key=True, blank=True)
 
