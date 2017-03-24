@@ -13,6 +13,10 @@ The main objective of the Online Course Portal project is to develop a Courses p
 This project should provide facility for the faculty members to create a test for the course specifying the test title and a set of multiple-choice questions and duration of time of the  test. The course content should be uploaded in the zip file format and the course content should be HTML pages. This project is very useful for the campus or organization
 
 
-Change the Procfile when running online or local
+
+
+Change the Procfile when running online or local:
+
 Running the program locally: web: python manage.py runserver 0.0.0.0:8000 (http://localhost:8000/)
+
 Running the program online: web: gunicorn portal.wsgi (https://stark-crag-58151.herokuapp.com/)

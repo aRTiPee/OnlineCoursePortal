@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Courses{% endblock title %}
+
+
+    {% block header %}
+            <li><a href="../../../../../../../../">Home</a></li>
+            <li class="active"><a href="../../../../../../../../courses.html">Courses</a></li>
+            <li><a href="../../../../../../../../about.html">About</a></li>
+            <li><a href="../../../../../../../../news.html">News</a></li>
+    {% endblock header %}
+    {% block nav %}
+    <div class="wrapper col2">
+      <div id="breadcrumb">
+        <ul>
+          <li class="first">You Are Here</li>
+          <li>&#187;</li>
+          <li><a href="../../../../../../../../">Home</a></li>
+          <li>&#187;</li>
+          <li class="current"><a href="../../../../../../../../courses.html">Courses</a></li>
+        </ul>
+      </div>
+    </div>
+    {% endblock nav %}
+
+{% block content %}
+{% if y != faculty and user.is_authenticated %}
+<p><a href="#">Course 1</a></p>
+<p><a href="#">Course 1</a></p>
+<p><a href="#">Course 1</a></p>
+<p><a href="#">Course 1</a></p>
+<p><a href="#">Course 1</a></p>
+<p><a href="#">Course 1231234124</a></p>
+{% elif y == faculty and user.is_authenticated %}
+<p><a href="#">Course 1231234124</a></p>
+{% else %}
+<h2>Students/Faculty Login</h2>
+            <form action="{% url 'signin' %}" method="post">
+            {% csrf_token %}
+              <fieldset>
+                <legend>Students Login Form</legend>
+                <label for="pupilname">Username:
+                  <input type="text" name="pupilname" id="pupilname" value="" />
+                </label>
+                <label for="pupilpass">Password:
+                  <input type="password" name="pupilpass" id="pupilpass" value="" />
+                </label>
+                <p>
+                <br>
+                  <input type="submit" name="pupillogin" id="pupillogin" value="Login" />
+                  &nbsp;
+                  <input type="reset" name="pupilreset" id="pupilreset" value="Reset" />
+                  &nbsp;<br><br>
+                  <input type="button" onclick="alert('Hello World!')" value="Forgot Username/Password">
+                </p>
+              </fieldset>
+            </form>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}News{% endblock title %}
+
+
+    {% block header %}
+            <li><a href="../../../../../../../../">Home</a></li>
+            <li><a href="../../../../../../../../courses.html">Courses</a></li>
+            <li><a href="../../../../../../../../about.html">About</a></li>
+            <li class="active"><a href="../../../../../../../../news.html">News</a></li>
+    {% endblock header %}
+    {% block nav %}
+    <div class="wrapper col2">
+      <div id="breadcrumb">
+        <ul>
+          <li class="first">You Are Here</li>
+          <li>&#187;</li>
+          <li><a href="../../../../../../../../">Home</a></li>
+          <li>&#187;</li>
+          <li class="current"><a href="../../../../../../../../news.html">News</a></li>
+        </ul>
+      </div>
+    </div>
+    {% endblock nav %}
+
+{% block content %}
+{% endblock content %}

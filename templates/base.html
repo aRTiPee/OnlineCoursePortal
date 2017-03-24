@@ -11,37 +11,272 @@
     <title>{% block title %}{% endblock title %}</title>
 
     {% block head_fonts %}
-    <!-- Material Design fonts -->
-    <link rel="stylesheet" type="text/css"
-                               href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <link rel="stylesheet" type="text/css"
-                               href="//fonts.googleapis.com/icon?family=Material+Icons">
     {% endblock head_fonts %}
 
     {% block head_styles %}
-    <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css"
-                               href="{% static 'vendor/bootstrap/3.3.6/css/bootstrap.min.css' %}">
-    <!-- Custom styles -->
-    <link rel="stylesheet" type="text/css"
-                               href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'layout/styles/layout.css' %}" type="text/css" />
     {% endblock head_styles %}
-
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 </head>
 
 <body>
+    
+  {% if user.is_authenticated %}
+    <!--##########################################-->
+    <div class="wrapper col0">
+      <div id="topbar">
+        <div id="slidepanel">
+          <div class="topbox">
+            <h2>Logout</h2>
+            <br><br><br><br><br><br>
+            <center><p><a href="{% url 'log_out' %}">Log out &raquo;</a></center>
+          </div>
+          <div class="topbox">
+            <h2>Edit Details</h2>
+            <form action="#" method="post">
+              <fieldset>
+                <legend>Edit personal information</legend>
+                <label>First Name:<input type="text" name="fname" id="fname"></label>
+                <label>Last Name:<input type="text" name="lname" id="lname"></label>
+                <label>Username:<input type="text" name="user" id="user"></label>
+                <label>Password:<input type="password" name="pwd" id="pwd"></label>
+                <label>Email:<input type="email" name="email" id="email"></label>
+                <p>
+                <br>
+                  <input type="submit" value="Edit">
+                  &nbsp;
+                </p>
+              </fieldset>
+            </form>
+          </div>
+          <div class="topbox last">
+            <h2>Course</h2>
+            <br><br><br><br><br><br>
+            <center><p><a href="#">Manage your course &raquo;</a></p></center>
+          </div>
+          <br class="clear" />
+        </div>
+        <div id="loginpanel">
+          <ul>
+            <li class="left">Logged In &raquo;</li> 
+            <li class="right" id="toggle"><a id="slideit" href="#slidepanel">{{ user.username }}</a><a id="closeit" style="display: none;" href="#slidepanel">Close Panel</a></li>
+          </ul>
+        </div>
+        <br class="clear" />
+      </div>
+    </div>
+    <!--##########################################-->
+    <!--##########################################-->
+    <!--##########################################-->
+    <!--##########################################-->
+  {% else %}
+    <div class="wrapper col0">
+      <div id="topbar">
+        <div id="slidepanel">
+          <div class="topbox">
+            <h2>Lipsum</h2>
+            <p>
+            Nullamlacus dui ipsum conseqlo borttis non euisque morbipen a sdapibulum orna.
+            </p>
+            <p>Urnau ltrices quis curabitur pha sellent esque congue magnisve stib ulum quismodo nulla et feugiat. Adipisciniap ellentum leo ut consequam.</p>
+            <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+          </div>
+          <div class="topbox">
+            <h2>Registration</h2>
+            <br><br><br>
+            <center><p><a href="../signup.html">New Student? REGISTER HERE! &raquo;</a></p></center>
+            <br><br><br>
+            <center><p><a href="../signup_faculty.html">Signing up for Faculty? SIGN UP HERE! &raquo;</a></p></center>
+            Faculty registration must wait for Administration approval before logging in.
+            <p></p>
+          </div>
+          <div class="topbox last">
+            <h2>Students/Faculty Login</h2>
+            <form action="{% url 'signin' %}" method="post">
+            {% csrf_token %}
+              <fieldset>
+                <legend>Students/Faculty Login Form</legend>
+                <label for="pupilname">Username:
+                  <input type="text" name="pupilname" id="pupilname" value="" />
+                </label>
+                <label for="pupilpass">Password:
+                  <input type="password" name="pupilpass" id="pupilpass" value="" />
+                </label>
+                <p>
+                <br>
+                  <input type="submit" name="pupillogin" id="pupillogin" value="Login" />
+                  &nbsp;
+                  <input type="reset" name="pupilreset" id="pupilreset" value="Reset" />
+                  &nbsp;<br><br>
+                  <input type="button" onclick="alert('Hello World!')" value="Forgot Username/Password">
+                </p>
+              </fieldset>
+            </form>
+          </div>
+          <br class="clear" />
+        </div>
+        <div id="loginpanel">
+          <ul>
+            <li class="left">Log In Here &raquo;</li>
+            <li class="right" id="toggle"><a id="slideit" href="#slidepanel">Students/Faculty</a><a id="closeit" style="display: none;" href="#slidepanel">Close Panel</a></li>
+          </ul>
+        </div>
+        <br class="clear" />
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- ####################################################################################################### -->
+    <div class="wrapper col1">
+      <div id="header">
+        <div id="logo">
+          <h1><a href="../../../../../../../../">GGWP Schools</a></h1>
+          <p>#Tagline here</p>
+        </div>
+        <div id="topnav">
+          <ul>
     {% block header %}
     {% endblock header %}
+          </ul>
+        </div>
+        <br class="clear" />
+      </div>
+    </div>
+    {% block nav %}
+    {% endblock nav %}
+
+    <!-- ####################################################################################################### -->
+    <div class="wrapper col2">
+      <div id="featured_slide">
+        <div class="featured_box"><a href="#"><img src="images/demo/450x300.gif" alt="" /></a>
+          <div class="floater">
+            <h2>1. ASDASD</h2>
+            <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ.</p>
+            <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+          </div>
+        </div>
+        <div class="featured_box"><a href="#"><img src="images/demo/450x300.gif" alt="" /></a>
+          <div class="floater">
+            <h2>2. ASDASD</h2>
+            <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. </p>
+            <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+          </div>
+        </div>
+        <div class="featured_box"><a href="#"><img src="images/demo/450x300.gif" alt="" /></a>
+          <div class="floater">
+            <h2>3. ASDASD</h2>
+            <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. </p>
+            <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+          </div>
+        </div>
+        <div class="featured_box"><a href="#"><img src="images/demo/450x300.gif" alt="" /></a>
+          <div class="floater">
+            <h2>4. ASDASD</h2>
+            <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. </p>
+            <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+          </div>
+        </div>
+        <div class="featured_box"><a href="#"><img src="images/demo/450x300.gif" alt="" /></a>
+          <div class="floater">
+            <h2>5. ASDASD</h2>
+            <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. ABCDEFGHIJKLMNOPQRSTUVWXYZ. </p>
+            <p class="readmore"><a href="#">Continue Reading &raquo;</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     {% block content %}
     {% endblock content %}
+
     {% block footer %}
+
+    <div class="wrapper col4">
+      <div id="footer">
+        <div class="footbox">
+          <h2>Contacts</h2>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Google</a></li>
+            <li><a href="#">Github</a></li>
+            <li><a href="#">Gmail</a></li>
+            <li class="last"><a href="#">Others</a></li>
+          </ul>
+        </div>
+        <div class="footbox">
+          <h2>Lacus interdum</h2>
+          <ul>
+            <li><a href="#"><iframe src="https://www.facebook.com/plugins/share_button.php?href=https://ggwpschools.herokuapp.com/&layout=icon_link&mobile_iframe=true&width=48&height=15&appId" width="48" height="15" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe></a></li>
+            <li><a href="#">Others</a></li>
+            <li><a href="#">Others</a></li>
+            <li><a href="#">Others</a></li>
+            <li><a href="#">Others</a></li>
+            <li class="last"><a href="#">Others</a></li>
+          </ul>
+        </div>
+        <!--<div class="footbox">
+          <h2>Lacus interdum</h2>
+          <ul>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Suspendisse in neque</a></li>
+            <li><a href="#">Praesent et eros</a></li>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Suspendisse in neque</a></li>
+            <li class="last"><a href="#">Praesent et eros</a></li>
+          </ul>
+        </div>
+        <div class="footbox">
+          <h2>Lacus interdum</h2>
+          <ul>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Suspendisse in neque</a></li>
+            <li><a href="#">Praesent et eros</a></li>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Suspendisse in neque</a></li>
+            <li class="last"><a href="#">Praesent et eros</a></li>
+          </ul>
+        </div>
+        <div class="footbox last">
+          <h2>Lacus interdum</h2>
+          <ul>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Suspendisse in neque</a></li>
+            <li><a href="#">Praesent et eros</a></li>
+            <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="#">Suspendisse in neque</a></li>
+            <li class="last"><a href="#">Praesent et eros</a></li>
+          </ul>
+        </div>-->
+        <br class="clear" />
+      </div>
+    </div>
+    <!-- ####################################################################################################### -->
+    <div class="wrapper col5">
+      <div id="copyright">
+        <p class="fl_left">Copyright &copy; 2017 - All Rights Reserved - <a href="../../../../../../../../">GGWP Schools</a></p>
+        <p class="fl_right"><a target="_blank" href="https://github.com/aRTiPee/OnlineCoursePortal" title="GGWP Schools">Github Project</a></p>
+        <br class="clear" />
+      </div>
+    </div>
+
     {% endblock footer %}
 
     {% block scripts %}
-    <!-- Bootstrap -->
-    <script src="{% static 'vendor/jquery/1.12.2/jquery.min.js' %}">
-    </script>
-    <script src="{% static 'vendor/bootstrap/3.3.6/js/bootstrap.min.js' %}">
+    <script type="text/javascript" src="{% static 'layout/scripts/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'layout/scripts/jquery.slidepanel.setup.js' %}"></script>
+    <!-- Homepage Only Scripts -->
+    <script type="text/javascript" src="{% static 'layout/scripts/jquery.cycle.min.js' %}"></script>
+    <script type="text/javascript">
+    $(function() {
+        $('#featured_slide').after('<div id="fsn"><ul id="fs_pagination">').cycle({
+            timeout: 5000,
+            fx: 'fade',
+            pager: '#fs_pagination',
+            pause: 1,
+            pauseOnPagerHover: 0
+        });
+    });
     </script>
     {% endblock scripts %}
 </body>

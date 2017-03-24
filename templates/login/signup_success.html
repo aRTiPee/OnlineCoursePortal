@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Success!{% endblock title %}
+
+
+    {% block header %}
+            <li><a href="../../../../../../../../">Home</a></li>
+            <li><a href="../../../../../../../../courses.html">Courses</a></li>
+            <li><a href="../../../../../../../../about.html">About</a></li>
+            <li><a href="../../../../../../../../news.html">News</a></li>
+    {% endblock header %}
+
+{% block content %}
+<h1>You are now registered!</h1>
+<br>
+<h2>Students/Faculty Login</h2>
+            <form action="{% url 'signin' %}" method="post">
+            {% csrf_token %}
+              <fieldset>
+                <legend>Students Login Form</legend>
+                <label for="pupilname">Username:
+                  <input type="text" name="pupilname" id="pupilname" value="" />
+                </label>
+                <label for="pupilpass">Password:
+                  <input type="password" name="pupilpass" id="pupilpass" value="" />
+                </label>
+                <p>
+                <br>
+                  <input type="submit" name="pupillogin" id="pupillogin" value="Login" />
+                  &nbsp;
+                  <input type="reset" name="pupilreset" id="pupilreset" value="Reset" />
+                  &nbsp;<br><br>
+                  <input type="button" onclick="alert('Hello World!')" value="Forgot Username/Password">
+                </p>
+              </fieldset>
+            </form>
+{% endblock content %}
