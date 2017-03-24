@@ -1,10 +1,14 @@
+from django.conf import settings
+from django.contrib import messages
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404
-from login.models import SubjectA, SubjectB, SubjectC, SubjectD, SubjectE
+from login.models import PhotoTutorials, PhotoshopBasics, SpecialEffects, LightRoom, TextEffects
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, Group
 from django.db import IntegrityError
 from django import template
 import pdb
+
 
 register = template.Library() 
 #def has_group():
@@ -19,6 +23,7 @@ register = template.Library()
 #            model = LoginForm
 #       def get(self, request, *args, **kwargs):
 #            return render(request, self.template_name,)
+
 
 def Index(request):
     return render(request, 'login/index.html', {})
@@ -91,6 +96,15 @@ def signup_faculty(request):
             user.is_active = False
             user.groups.add(Group.objects.get(name='Faculty'))
             user.save()
+            send_mail(
+                'Faculty Register Alert',
+                'First Name: ' + user.first_name + 'Last Name: ' + 
+                user.last_name + 'Username: ' + usern + 
+                'Email Address: ' + email,
+                settings.EMAIL_HOST_USER,
+                [email],
+                fail_silently=True,
+            )
             if(authenticate(username=usern, password=pwd)):
                 return render(request, 'login/signup_success_faculty.html',)
             else:
@@ -119,13 +133,13 @@ def course1(request):
         n = request.user
         if not x:
             try:
-                subject = SubjectA.objects.get(students=n)
+                subject = PhotoTutorials.objects.get(students=n)
                 return render(request, 'login/course1.html', {'faculty':faculty, 'y':y})
             except:
                 return render(request, 'login/course1_register.html', {})
         else:
             try:
-                subject = SubjectA.objects.get(students=n)
+                subject = PhotoTutorials.objects.get(students=n)
                 return render(request, 'login/course1.html', {'faculty':faculty, 'y':y})
             except:
                 y = x[0]
@@ -139,13 +153,13 @@ def register_course1(request):
         n = request.user
         if not x:
             try:
-                subject = SubjectA(students=n)
+                subject = PhotoTutorials(students=n)
                 subject.save()
                 return render(request, 'login/course1.html', {'faculty':faculty, 'y':y})
             except:
                 return render(request, 'login/course1.html', {})
         else:
-            subject = SubjectA(students=n)
+            subject = PhotoTutorials(students=n)
             subject.save()
             return render(request, 'login/course1.html', {'faculty':faculty, 'y':y})
 
@@ -157,13 +171,13 @@ def course2(request):
         n = request.user
         if not x:
             try:
-                subject = SubjectB.objects.get(students=n)
+                subject = PhotoshopBasics.objects.get(students=n)
                 return render(request, 'login/course2.html', {'faculty':faculty, 'y':y})
             except:
                 return render(request, 'login/course2_register.html', {})
         else:
             try:
-                subject = SubjectB.objects.get(students=n)
+                subject = PhotoshopBasics.objects.get(students=n)
                 return render(request, 'login/course2.html', {'faculty':faculty, 'y':y})
             except:
                 y = x[0]
@@ -177,13 +191,13 @@ def register_course2(request):
         n = request.user
         if not x:
             try:
-                subject = SubjectB(students=n)
+                subject = PhotoshopBasics(students=n)
                 subject.save()
                 return render(request, 'login/course2.html', {'faculty':faculty, 'y':y})
             except:
                 return render(request, 'login/course2.html', {})
         else:
-            subject = SubjectB(students=n)
+            subject = PhotoshopBasics(students=n)
             subject.save()
             return render(request, 'login/course2.html', {'faculty':faculty, 'y':y})
 
@@ -195,13 +209,13 @@ def course3(request):
         n = request.user
         if not x:
             try:
-                subject = SubjectC.objects.get(students=n)
+                subject = SpecialEffects.objects.get(students=n)
                 return render(request, 'login/course3.html', {'faculty':faculty, 'y':y})
             except:
                 return render(request, 'login/course3_register.html', {})
         else:
             try:
-                subject = SubjectC.objects.get(students=n)
+                subject = SpecialEffects.objects.get(students=n)
                 return render(request, 'login/course3.html', {'faculty':faculty, 'y':y})
             except:
                 y = x[0]
@@ -216,13 +230,13 @@ def register_course3(request):
         if not x:
 
             try:
-                subject = SubjectC(students=n)
+                subject = SpecialEffects(students=n)
                 subject.save()
                 return render(request, 'login/course3.html', {'faculty':faculty, 'y':y})
             except:
                 return render(request, 'login/course3.html', {})
         else:
-            subject = SubjectC(students=n)
+            subject = SpecialEffects(students=n)
             subject.save()
             return render(request, 'login/course3.html', {'faculty':faculty, 'y':y})
 
@@ -234,13 +248,13 @@ def course4(request):
         n = request.user
         if not x:
             try:
-                subject = SubjectD.objects.get(students=n)
+                subject = LightRoom.objects.get(students=n)
                 return render(request, 'login/course4.html', {'faculty':faculty, 'y':y})
             except:
                 return render(request, 'login/course4_register.html', {})
         else:
             try:
-                subject = SubjectD.objects.get(students=n)
+                subject = LightRoom.objects.get(students=n)
                 return render(request, 'login/course4.html', {'faculty':faculty, 'y':y})
             except:
                 y = x[0]
@@ -254,13 +268,13 @@ def register_course4(request):
         n = request.user
         if not x:
             try:
-                subject = SubjectD(students=n)
+                subject = LightRoom(students=n)
                 subject.save()
                 return render(request, 'login/course4.html', {'faculty':faculty, 'y':y})
             except:
                 return render(request, 'login/course4.html', {})
         else:
-            subject = SubjectD(students=n)
+            subject = LightRoom(students=n)
             subject.save()
             return render(request, 'login/course4.html', {'faculty':faculty, 'y':y})
 
@@ -272,13 +286,13 @@ def course5(request):
         n = request.user
         if not x:
             try:
-                subject = SubjectE.objects.get(students=n)
+                subject = TextEffects.objects.get(students=n)
                 return render(request, 'login/course5.html', {'faculty':faculty, 'y':y})
             except:
                 return render(request, 'login/course5_register.html', {})
         else:
             try:
-                subject = SubjectE.objects.get(students=n)
+                subject = TextEffects.objects.get(students=n)
                 return render(request, 'login/course5.html', {'faculty':faculty, 'y':y})
             except:
                 y = x[0]
@@ -292,12 +306,12 @@ def register_course5(request):
         n = request.user
         if not x:
             try:
-                subject = SubjectE(students=n)
+                subject = TextEffects(students=n)
                 subject.save()
                 return render(request, 'login/course5.html', {'faculty':faculty, 'y':y})
             except:
                 return render(request, 'login/course5.html', {})
         else:
-            subject = SubjectE(students=n)
+            subject = TextEffects(students=n)
             subject.save()
             return render(request, 'login/course5.html', {'faculty':faculty, 'y':y})
