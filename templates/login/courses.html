@@ -23,18 +23,15 @@
     {% endblock nav %}
 
 {% block content %}
-{% if y != faculty and user.is_authenticated %}
-<p><a href="/course1.html">Course 1</a></p>
-<p><a href="/course2.html">Course 2</a></p>
-<p><a href="/course3.html">Course 3</a></p>
-<p><a href="/course4.html">Course 4</a></p>
-<p><a href="/course5.html">Course 5</a></p>
-{% elif y == faculty and user.is_authenticated %}
-<p><a href="/course1.html">Course 1 - Faculty</a></p>
-<p><a href="/course2.html">Course 2 - Faculty</a></p>
-<p><a href="/course3.html">Course 3 - Faculty</a></p>
-<p><a href="/course4.html">Course 4 - Faculty</a></p>
-<p><a href="/course5.html">Course 5 - Faculty</a></p>
+{% if user.is_authenticated %}
+<center><p><a href="/course1.html">Course 1: Photoshop Basics<br>
+The Pentool</a></p>
+<p><a href="/course2.html">Course 2: Photo Tutorials<br>
+Sky Replacement and Adding Clouds to a Photo in Photoshop</a></p>
+<p><a href="/course3.html">Course 3: Photo Tutorials<br>
+How to Add Bokeh to a Photo and Blur Background in </a></p>
+</center>
+
 {% else %}
 <center><h2>Students/Faculty Login</h2>
             <form action="{% url 'signin' %}" method="post">
